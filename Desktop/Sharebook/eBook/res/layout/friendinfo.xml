@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bookimgid"
+        android:layout_below="@+id/bookimgid"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:text="好友藏书"
+        android:textSize="20sp" >
+
+        <requestFocus />
+    </TextView>
+
+    <ListView
+        android:id="@+id/friendbook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText3" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/friendinfoname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/bookimgid"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/bookimgid"
+        android:ems="10"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/friendinfobooknum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText3"
+        android:layout_alignLeft="@+id/friendinfoname"
+        android:ems="10"
+        android:text="好友藏书数量：6"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/bookimgid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/head01" />
+
+</RelativeLayout>

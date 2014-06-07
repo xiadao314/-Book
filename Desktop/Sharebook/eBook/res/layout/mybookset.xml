@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout android:orientation="horizontal" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <Button android:id="@+id/addbook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加入"/>
+        <Button android:id="@+id/sharebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一键分享"/>
+    </LinearLayout>
+    
+	<ListView
+		android:id="@id/android:list" 
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:orientation="vertical"  
+   	 	android:dividerHeight="1px" /> 
+    
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/addinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="消息" />
+
+    <AutoCompleteTextView
+        android:id="@+id/schoolname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/addinfo"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/search"
+        android:ems="10"
+        android:hint="请输入学校名称" />
+
+    <Button
+        android:id="@+id/search"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/schoolname"
+        android:layout_alignParentRight="true"
+        android:text="搜索" />
+
+    <ListView
+        android:id="@+id/searchedfriends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/schoolname"
+        android:layout_marginTop="18dp" >
+    </ListView>
+
+</RelativeLayout>

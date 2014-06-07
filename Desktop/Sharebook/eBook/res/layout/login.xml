@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:id="@+id/loginLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/main"
+    android:gravity="center_vertical"
+    android:stretchColumns="0,3"
+    >
+    <!-- 第一行 -->
+    <TableRow android:id="@+id/loginRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView/>
+        <TextView android:text="用户名： "
+            android:id="@+id/loginView1"
+            android:layout_width="wrap_content"
+            android:textSize="24px"
+            android:layout_height="wrap_content"
+            />
+        <EditText android:id="@+id/loginID"
+            android:textSize="24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200px"
+            android:maxWidth="200px"
+            android:hint="请输入用户名..."
+            android:singleLine="true"
+            />
+        <TextView/>     
+    </TableRow>
+    
+    <!-- 第二行 -->
+    <TableRow android:id="@+id/loginRow2"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content">
+            <TextView/>
+            <TextView android:text="密  码:"
+                android:id="@+id/loginView2"
+                android:textSize="24px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <EditText android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="24px"
+                android:id="@+id/loginPass"
+                android:inputType="textPassword"
+                android:hint="请输入密码..."
+                android:singleLine="true"
+                android:maxWidth="200px"
+                />
+            <TextView/>          
+    </TableRow>
+    
+    <!-- 第三行 -->
+    <TableRow android:id="@+id/loginRow3"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content">
+            <TextView/>
+            <Button android:text="注册"
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+                />
+            <Button android:text="登录"
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <TextView/>          
+    </TableRow>
+</TableLayout>
