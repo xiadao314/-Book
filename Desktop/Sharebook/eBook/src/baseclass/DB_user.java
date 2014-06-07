@@ -1,5 +1,7 @@
 package baseclass;
-public class DB_user {
+
+
+public class DB_user{
 	
 	private int Uid;
 	private String nickname;
@@ -15,9 +17,10 @@ public class DB_user {
 	private String time;
 	private boolean state;
 	private boolean authority;	
+	private int ownbook;
 	
-	public DB_user(int Uid, 
-			       String nickname,
+	public DB_user(int Uid,
+				   String nickname,
 			       String password,
 				   String name,
 			       char sex,
@@ -29,8 +32,9 @@ public class DB_user {
 			       int Lid,
 			       String time,
 			       boolean state,
-			       boolean authority) {
-		this.Uid = Uid;
+			       boolean authority,
+			       int ownbook) {
+		this.Uid=Uid;
 		this.nickname = nickname;
 		this.password = password;
 		this.name = name;
@@ -44,10 +48,10 @@ public class DB_user {
 		this.time = time;
 		this.state = state;
 		this.authority = authority;
+		this.ownbook=ownbook;
 	}
-	
 	public int getUid() {
-		return Uid;
+		return this.Uid;
 	}
 	
 	public void setUid(int Uid) {
@@ -157,4 +161,14 @@ public class DB_user {
 	public void setAuthority(boolean authority) {
 		this.authority = authority;
 	}
+	
+	public void setOwnbook(int ownbook){
+		this.ownbook=ownbook;
+	}
+	
+	public int getOwnbook()
+	{
+		return ownbook;
+	}
+
 }

@@ -21,7 +21,7 @@ public class RegisterManager {
 		boolean info=false;
 		try{
 			client=new Socket();
-			client.connect(new InetSocketAddress("114.215.172.222",8000),1000);
+			client.connect(new InetSocketAddress("114.215.172.222",8000),5000);
 			SendMsg(client,"0 10");	
 			SendMsg(client,name);
 			SendMsg(client,pwd);
@@ -47,7 +47,7 @@ public class RegisterManager {
 	}
 	
 	private String ReceiveMsg(Socket socket)throws IOException {
-		socket.setSoTimeout(1000);
+		socket.setSoTimeout(5000);
 		reader=new BufferedReader(
 				new InputStreamReader(socket.getInputStream()));
 		String txt=reader.readLine();

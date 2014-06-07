@@ -1,19 +1,24 @@
 package com.example.ebook;
 
+import network.AllPostManager;
 import android.annotation.SuppressLint;
-import android.app.ActivityGroup; 
-import android.content.Intent; 
-import android.os.Bundle; 
-import android.view.View; 
-import android.view.ViewGroup; 
+import android.app.ActivityGroup;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.view.ViewGroup.LayoutParams; 
-import android.widget.AdapterView; 
-import android.widget.AdapterView.OnItemClickListener; 
-import android.widget.BaseAdapter; 
-import android.widget.GridView; 
-import android.widget.ImageView; 
-import android.widget.LinearLayout; 
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 public class MainControlActivity extends ActivityGroup implements OnItemClickListener { 
 
 	private GridView mGridView; 
@@ -21,13 +26,42 @@ public class MainControlActivity extends ActivityGroup implements OnItemClickLis
 	private int [] mImageLightIds; 
 	private ImageAdapter mImageAdapter; 
 	private LinearLayout mLinearLayout; 
+	//private MyReceiver receiver=null;
 	
 	@Override 
 	public void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState); 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.control); 
-
+		
+		
+		/*new Thread(new Runnable() {		
+			  @Override
+			  public void run() {
+				  while (true) {
+					  try {
+						  	Log.i("test","中山大学");
+						  	Intent intent=new Intent();
+						  	Bundle bundle = new Bundle();
+						  	bundle.putString("key","0");
+						  	bundle.putString("school","中山大学");
+						  	intent.putExtras(bundle);
+						  	intent.setClass(MainControlActivity.this, AllPostManager.class);
+						  	startService(intent);
+						  	Thread.sleep(10000);
+					  } catch (InterruptedException e) {
+						  	e.printStackTrace();
+					  }
+				  }
+			  }
+		}).start();*/
+		
+		/*IntentFilter filter=new IntentFilter();
+		filter.addAction("AllManager");
+		receiver=new MyReceiver();
+		MainControlActivity.this.registerReceiver(receiver,filter);
+		*/
+		
 		//mImageIds = new int[]{R.drawable.btn_main_normal, R.drawable.btn_main_normal, R.drawable.btn_main_normal, R.drawable.btn_main_normal}; 
 		//mImageLightIds = new int[]{R.drawable.btn_main_pressed, R.drawable.btn_main_pressed, R.drawable.btn_main_pressed, R.drawable.btn_main_pressed}; 
 		mImageIds = new int[]{R.drawable.taoshu1, R.drawable.shuku1, R.drawable.haoyou1, R.drawable.shezhi1};
@@ -42,8 +76,16 @@ public class MainControlActivity extends ActivityGroup implements OnItemClickLis
 		mGridView.setAdapter(mImageAdapter); 
 		mGridView.setOnItemClickListener(this); 
 		startActivity(0); 
+		
 	} 
-
+	/*public class MyReceiver extends BroadcastReceiver {
+	    	@Override
+	    	public void onReceive(Context context, Intent intent) {
+	    		Bundle bundle=intent.getExtras();
+	    		int count=bundle.getInt("count");  
+	    		Log.i("test",""+count);
+	    	}
+	}*/
 
 	@Override 
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) { 
@@ -123,7 +165,13 @@ public class MainControlActivity extends ActivityGroup implements OnItemClickLis
 			return convertView; 
 		} 
 
-
 	} 
+	
+	@Override
+	 protected void onDestroy() {
+	     //结束服务
+	        stopService(new Intent(MainControlActivity.this, AllPostManager.class));
+	        super.onDestroy();  
+	 }
 } 
 

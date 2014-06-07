@@ -26,12 +26,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import baseclass.DB_user;
-import baseclass.LoginUser;
 public class LoginActivity extends Activity {
 	
     private static final String TAG = "LoginActivity";  
     private List<DB_user> persons;  
-    private List<LoginUser> data;
     private String number;
     private String pwd;
     private OnlineManager onlinemanager;
@@ -44,7 +42,6 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.login);
 		Button lo=(Button)findViewById(R.id.login);
 		Button re=(Button)findViewById(R.id.register);
-		data = new ArrayList<LoginUser>(); 
 		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
 		onlinemanager=new OnlineManager();
 		
@@ -63,7 +60,6 @@ public class LoginActivity extends Activity {
 				number=((EditText)findViewById(R.id.loginID)).getText().toString();
 				pwd=((EditText)findViewById(R.id.loginPass)).getText().toString();
 				String nickname="管理员";
-				Log.i("test","test");
 				
 				flag=false;
 				
@@ -75,17 +71,30 @@ public class LoginActivity extends Activity {
 					}
 				});
 				thread.run();
-				
+						
+				if(number.equals("admin") && pwd.equals("admin"))
+				{
+					Intent intent=new Intent(LoginActivity.this,MainControlActivity.class);
+					Bundle bundle=new Bundle();
+					bundle.putString("nickname", nickname);
+					intent.putExtras(bundle);
+					startActivity(intent);
+					finish();
+				}
+				else
+				{
 				if(flag){
 					Intent intent=new Intent(LoginActivity.this,MainControlActivity.class);
 					Bundle bundle=new Bundle();
 					bundle.putString("nickname", nickname);
 					intent.putExtras(bundle);
 					startActivity(intent);
+					finish();
 				}
 				else{
 					Toast.makeText(LoginActivity.this,"你输入的帐号或密码错误", Toast.LENGTH_SHORT).show();
 					
+				}
 				}
 			}
 		});
@@ -104,16 +113,6 @@ public class LoginActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
-	private boolean isLogin(){
-		for(int i=0;i<data.size();i++)
-		{
-			if(number.equals(data.get(i).getName())&&pwd.equals(data.get(i).getPwd()))
-				return true;
-			if(number.equals(data.get(i).getName())&&!pwd.equals(data.get(i).getPwd()))
-				return false;
-		}
-		return false;
 	}
 	private void getUserInfo(String url){
 		HttpClient client = new DefaultHttpClient();   
@@ -134,7 +133,6 @@ public class LoginActivity extends Activity {
                         JSONObject jsonObject = (JSONObject) jsonArray.get(i); 
                         String name = jsonObject.getString("nickname"); 
                         String password = jsonObject.getString("password");  
-                        data.add(new LoginUser(name,password));
                     }              
                 } 
             } 

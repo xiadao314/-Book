@@ -32,7 +32,7 @@ public class JsonParse {
             JSONObject item = array.getJSONObject(i);  
             String name = item.getString("nickname");  
             String password = item.getString("password");  
-            mlists.add(new DB_user(0,name,password,"",'\0',0,"",0,"",0,0,"",true,true)); 
+            mlists.add(new DB_user(0,name,password,"",'\0',0,"",0,"",0,0,"",true,true,0)); 
         }  
         
         return mlists;  

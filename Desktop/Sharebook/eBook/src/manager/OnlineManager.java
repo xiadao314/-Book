@@ -20,7 +20,7 @@ public class OnlineManager{
 		boolean info=false;
 		try{
 			server=new Socket();
-			server.connect(new InetSocketAddress("114.215.172.222",8000),1000);
+			server.connect(new InetSocketAddress("114.215.172.222",8000),5000);
 			SendMsg(server,"0 11");	
 			SendMsg(server,name);
 			SendMsg(server,pwd);
@@ -46,7 +46,7 @@ public class OnlineManager{
 		writer.flush();
 	}
 	private String ReceiveMsg(Socket socket)throws IOException{
-		socket.setSoTimeout(1000);
+		socket.setSoTimeout(5000);
 		reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		String txt=reader.readLine();
 		return txt;

@@ -149,16 +149,17 @@ public final class R {
         public static final int friendbooklist_item=0x7f030005;
         public static final int friendinfo=0x7f030006;
         public static final int head=0x7f030007;
-        public static final int login=0x7f030008;
-        public static final int mainlistview_item=0x7f030009;
-        public static final int mybooklistview=0x7f03000a;
-        public static final int mybookset=0x7f03000b;
-        public static final int pull_to_refresh=0x7f03000c;
-        public static final int pull_to_refresh_header=0x7f03000d;
-        public static final int register=0x7f03000e;
-        public static final int searchfriendlist_item=0x7f03000f;
-        public static final int setup=0x7f030010;
-        public static final int setuplistitem=0x7f030011;
+        public static final int hello=0x7f030008;
+        public static final int login=0x7f030009;
+        public static final int mainlistview_item=0x7f03000a;
+        public static final int mybooklistview=0x7f03000b;
+        public static final int mybookset=0x7f03000c;
+        public static final int pull_to_refresh=0x7f03000d;
+        public static final int pull_to_refresh_header=0x7f03000e;
+        public static final int register=0x7f03000f;
+        public static final int searchfriendlist_item=0x7f030010;
+        public static final int setup=0x7f030011;
+        public static final int setuplistitem=0x7f030012;
     }
     public static final class menu {
         public static final int main=0x7f070000;

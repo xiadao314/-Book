@@ -1,13 +1,20 @@
 package com.example.ebook;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import manager.Find_Friend_School;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -15,6 +22,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
+import baseclass.DB_user;
 
 public class AddFriendActivity extends Activity{
 
@@ -23,54 +32,11 @@ public class AddFriendActivity extends Activity{
 	private AutoCompleteTextView auto;
 	private Button goSearch;
 	private Button addinfoBtn;
+	private GetNewsReceiver receiver=null;
 	
 	private ListView searchList;
 	private List<Map<String, Object>> searchDataList = new ArrayList<Map<String, Object>>();
-	private void setData(){
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		map=new HashMap<String,Object>();
-		map.put("img", R.drawable.head01);
-		map.put("name", "张小明");
-		map.put("book", "藏书：23");
-		map.put("intro", "简介：阳光帅气就是我！");
-		searchDataList.add(map);
-		
-		map=new HashMap<String,Object>();
-		map.put("img", R.drawable.head01);
-		map.put("name", "李小红");
-		map.put("book", "藏书：56");
-		map.put("intro", "简介：一个热爱读书的小姑娘");
-		searchDataList.add(map);
-		
-		map=new HashMap<String,Object>();
-		map.put("img", R.drawable.head01);
-		map.put("name", "王妮玛");
-		map.put("book", "藏书：31");
-		map.put("intro", "简介：希望能和大家一起多分享好书");
-		searchDataList.add(map);
-		
-		map=new HashMap<String,Object>();
-		map.put("img", R.drawable.head01);
-		map.put("name", "周阳");
-		map.put("book", "藏书：16");
-		map.put("intro", "简介：新人一枚请多指教");
-		searchDataList.add(map);
-		
-		map=new HashMap<String,Object>();
-		map.put("img", R.drawable.head01);
-		map.put("name", "郭小明");
-		map.put("book", "藏书：24");
-		map.put("intro", "简介：悲伤逆流成河");
-		searchDataList.add(map);
-		
-		map=new HashMap<String,Object>();
-		map.put("img", R.drawable.head01);
-		map.put("name", "韩函");
-		map.put("book", "藏书：23");
-		map.put("intro", "简介：萌");
-		searchDataList.add(map);
-	}
+	private Find_Friend_School find_friend_school;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +44,12 @@ public class AddFriendActivity extends Activity{
 		setContentView(R.layout.addfriend);
 		
 		auto = (AutoCompleteTextView) findViewById(R.id.schoolname);
+		
 		//创建一个ArrayAdapter封装存有学校名字的数组
 		ArrayAdapter<String> schoolsAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_dropdown_item_1line, schools);
 		auto.setAdapter(schoolsAdapter);
 		auto.setThreshold(1);
-		
-		setData();
 		goSearch = (Button) findViewById(R.id.search);
 		searchList = (ListView) findViewById(R.id.searchedfriends);
 		//点击搜索按钮出结果
@@ -100,6 +65,8 @@ public class AddFriendActivity extends Activity{
 						new String[] {"img", "name", "book", "intro"},
 						new int[] {R.id.searchimgid, R.id.searchednameid, R.id.searchedbookid, R.id.searchedintroid});
 				searchList.setAdapter(listItemAdapter);
+				GetDataTask test=new GetDataTask();
+				test.execute();
 			}
 			
 		});
@@ -118,4 +85,49 @@ public class AddFriendActivity extends Activity{
 		});
 		
 	}
+	
+	private class GetDataTask extends AsyncTask<Void, Void, List<DB_user>> {
+
+        @Override
+        protected List<DB_user> doInBackground(Void... params) {
+            // Simulates a background job.
+        	find_friend_school=new Find_Friend_School();        	
+        	List<DB_user> data=new ArrayList<DB_user>();
+			try {
+				data = find_friend_school.run(URLEncoder.encode(auto.getText().toString(),"utf-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				return data;
+			}
+            return data;
+        }
+
+        @Override
+        protected void onPostExecute(List<DB_user> result) {   
+        	
+        	int count=result.size();
+        	Map<String, Object> map;
+        	Toast.makeText(AddFriendActivity.this,"努力加载中请稍等", Toast.LENGTH_SHORT).show();
+        	searchDataList.clear();
+        	while(count>0)
+        	{
+        		map=new HashMap<String,Object>();
+        		map.put("img", R.drawable.head01);
+        		map.put("name", result.get(count-1).getNickname());
+        		map.put("book", "藏书："+result.get(count-1).getOwnbook());
+        		map.put("intro","简介："+result.get(count-1).getMark());
+        		searchDataList.add(map);
+        		count--;
+        	}
+            super.onPostExecute(result);
+        }
+    }
+	
+	public class GetNewsReceiver extends BroadcastReceiver {
+    	@Override
+    	public void onReceive(Context context, Intent intent) {
+    		Bundle bundle=intent.getExtras();
+    		//ArrayList<String> data=bundle.getStringArrayList("data");  
+    	}
+}
 }
