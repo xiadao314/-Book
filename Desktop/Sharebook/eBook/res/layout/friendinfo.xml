@@ -4,7 +4,30 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/editText3"
+        android:id="@+id/headview"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/headbackground"
+        android:gravity="center"
+        android:text="好友信息"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+    
+    <ImageView
+        android:id="@+id/bookimgid"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/headview"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:src="@drawable/head01" />
+    
+    <TextView
+        android:id="@+id/newbookintro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/bookimgid"
@@ -22,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editText3" >
+        android:layout_below="@+id/newbookintro" >
     </ListView>
 
     <TextView
@@ -30,27 +53,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/bookimgid"
-        android:layout_marginLeft="18dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
         android:layout_toRightOf="@+id/bookimgid"
         android:ems="10"
+        android:text="好友名字"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/friendinfobooknum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText3"
+        android:layout_above="@+id/newbookintro"
         android:layout_alignLeft="@+id/friendinfoname"
         android:ems="10"
         android:text="好友藏书数量：6"
         android:textSize="20sp" />
 
-    <ImageView
-        android:id="@+id/bookimgid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/head01" />
+    
 
 </RelativeLayout>

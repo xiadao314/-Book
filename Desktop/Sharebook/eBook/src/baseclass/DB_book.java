@@ -7,27 +7,30 @@ public class DB_book {
 	private String writer;
 	private char type;
 	private boolean state;
-	private int Lid;
+	private String label;
 	private String mark;
+	private String coverPath;
 	private int Uid;
-	private long time;
+	private String time;
 	
 	public DB_book(int Bid,
 			       String name,
 			       String writer,
 			       char type,
-			       boolean state,			       
+			       boolean state,	
+			       String label,
 			       String mark,
-			       int Lid,
+                   String coverPath,
 			       int Uid,
-			       long time) {
+			       String time) {
 		this.Bid = Bid;
 		this.name = name;
 		this.writer = writer;
 		this.type = type;
 		this.state = state;
+		this.label = label;
 		this.mark = mark;
-		this.Lid = Lid;
+		this.coverPath = coverPath;
 		this.Uid = Uid;
 		this.time = time;
 	}
@@ -72,6 +75,14 @@ public class DB_book {
 		this.state = state;
 	}
 	
+	public String getLabel() {
+		return label;
+	}
+	
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	
 	public String getMark() {
 		return mark;
 	}
@@ -80,12 +91,12 @@ public class DB_book {
 		this.mark = mark;
 	}
 
-	public int getLid() {
-		return Lid;
-	}
+	public String getCoverPath() {
+		return coverPath;
+	} 
 	
-	public void setLid(int Lid) {
-		this.Lid = Lid;
+	public void setCoverPath(String coverPath) {
+		this.coverPath = coverPath;
 	}
 	
 	public int getUid() {
@@ -96,12 +107,11 @@ public class DB_book {
 		this.Uid = Uid;
 	}
 	
-	public long getTime() {
+	public String getTime() {
 		return time;
 	}
 	
-	public void seTime(long time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
-	
 }

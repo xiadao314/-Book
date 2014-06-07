@@ -3,12 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/headbackground"
+        android:gravity="center"
+        android:text="消 息"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
     <ListView
-        android:id="@+id/addinfolist"
+        android:id="@+id/notelist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_below="@+id/textView1" >
     </ListView>
 
 </RelativeLayout>

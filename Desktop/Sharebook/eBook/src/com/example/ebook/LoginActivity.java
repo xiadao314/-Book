@@ -59,7 +59,6 @@ public class LoginActivity extends Activity {
 			public void onClick(View v){
 				number=((EditText)findViewById(R.id.loginID)).getText().toString();
 				pwd=((EditText)findViewById(R.id.loginPass)).getText().toString();
-				String nickname="π‹¿Ì‘±";
 				
 				flag=false;
 				
@@ -76,7 +75,7 @@ public class LoginActivity extends Activity {
 				{
 					Intent intent=new Intent(LoginActivity.this,MainControlActivity.class);
 					Bundle bundle=new Bundle();
-					bundle.putString("nickname", nickname);
+					bundle.putString("nickname", "admin");
 					intent.putExtras(bundle);
 					startActivity(intent);
 					finish();
@@ -86,7 +85,7 @@ public class LoginActivity extends Activity {
 				if(flag){
 					Intent intent=new Intent(LoginActivity.this,MainControlActivity.class);
 					Bundle bundle=new Bundle();
-					bundle.putString("nickname", nickname);
+					bundle.putString("nickname", number);
 					intent.putExtras(bundle);
 					startActivity(intent);
 					finish();

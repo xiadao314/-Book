@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/friendlistimg"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/head01" />
+
+    <TextView
+        android:id="@+id/friendlistname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/friendlistimg"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@+id/friendlistimg"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+</RelativeLayout>

@@ -53,6 +53,7 @@
         <activity android:name=".BookInfoActivity"></activity>
         <activity android:name=".AddFriendActivity"></activity>
         <activity android:name=".AddInfoActivity"></activity>
+        <activity android:name=".AddBookInfoActivity"></activity>
         <service  android:name="network.AllPostManager" />
         
     </application>

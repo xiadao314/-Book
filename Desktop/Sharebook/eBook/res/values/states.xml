@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SpinnerContent">
+        <item>在架上</item>
+        <item>已借出</item>
+    </string-array>
+</resources>

@@ -58,13 +58,6 @@ public class AddFriendActivity extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				
-				SimpleAdapter listItemAdapter = new SimpleAdapter(AddFriendActivity.this,
-						searchDataList,
-						R.layout.searchfriendlist_item,
-						new String[] {"img", "name", "book", "intro"},
-						new int[] {R.id.searchimgid, R.id.searchednameid, R.id.searchedbookid, R.id.searchedintroid});
-				searchList.setAdapter(listItemAdapter);
 				GetDataTask test=new GetDataTask();
 				test.execute();
 			}
@@ -93,6 +86,7 @@ public class AddFriendActivity extends Activity{
             // Simulates a background job.
         	find_friend_school=new Find_Friend_School();        	
         	List<DB_user> data=new ArrayList<DB_user>();
+        	publishProgress();
 			try {
 				data = find_friend_school.run(URLEncoder.encode(auto.getText().toString(),"utf-8"));
 			} catch (UnsupportedEncodingException e) {
@@ -101,13 +95,15 @@ public class AddFriendActivity extends Activity{
 			}
             return data;
         }
-
+        @Override  
+        protected void onProgressUpdate(Void... params) {  
+        	Toast.makeText(AddFriendActivity.this,"努力加载中请稍等", Toast.LENGTH_SHORT).show();
+        }  
         @Override
         protected void onPostExecute(List<DB_user> result) {   
         	
         	int count=result.size();
         	Map<String, Object> map;
-        	Toast.makeText(AddFriendActivity.this,"努力加载中请稍等", Toast.LENGTH_SHORT).show();
         	searchDataList.clear();
         	while(count>0)
         	{
@@ -119,6 +115,12 @@ public class AddFriendActivity extends Activity{
         		searchDataList.add(map);
         		count--;
         	}
+        	SimpleAdapter listItemAdapter = new SimpleAdapter(AddFriendActivity.this,
+					searchDataList,
+					R.layout.searchfriendlist_item,
+					new String[] {"img", "name", "book", "intro"},
+					new int[] {R.id.searchimgid, R.id.searchednameid, R.id.searchedbookid, R.id.searchedintroid});
+			searchList.setAdapter(listItemAdapter);
             super.onPostExecute(result);
         }
     }
@@ -129,5 +131,5 @@ public class AddFriendActivity extends Activity{
     		Bundle bundle=intent.getExtras();
     		//ArrayList<String> data=bundle.getStringArrayList("data");  
     	}
-}
+	}
 }

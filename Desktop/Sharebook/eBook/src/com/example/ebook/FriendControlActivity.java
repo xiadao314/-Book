@@ -1,6 +1,9 @@
 package com.example.ebook;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,27 +18,85 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class FriendControlActivity extends Activity{
 	
 	private Button addFriend;
+	private ListView myFriendList;
+	
+	private List<Map<String,Object>> friendDataList=new ArrayList<Map<String,Object>>();
+	
+	private void setData(){
+		Map<String,Object> map=new HashMap<String,Object>();
+
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head01);
+		map.put("name", "张小明");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head02);
+		map.put("name", "王妮玛");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head03);
+		map.put("name", "韩萌");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head04);
+		map.put("name", "郭小明");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head05);
+		map.put("name", "潘小花");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head06);
+		map.put("name", "小马甲");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head07);
+		map.put("name", "五二");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head08);
+		map.put("name", "李小芳");
+		friendDataList.add(map);
+		
+		map=new HashMap<String,Object>();
+		map.put("img", R.drawable.head09);
+		map.put("name", "薛小谔");
+		friendDataList.add(map);
+	}
+	
 	
 	protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.friend);
-
+        
+        /*
         final ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
             //设置组视图的图片
             int[] logos = new int[] { R.drawable.user_group, R.drawable.user_group,R.drawable.user_group};
@@ -211,8 +272,61 @@ public class FriendControlActivity extends Activity{
     			return true;
     		}
     	});
+        */
         
+        setData();
         
+        myFriendList = (ListView) findViewById(R.id.myfiendlistview);
+        SimpleAdapter listItemAdapter = new SimpleAdapter(this,
+				friendDataList,
+				R.layout.myfriendlist_item,
+				new String[] {"img", "name"},
+				new int[] {R.id.friendlistimg, R.id.friendlistname});
+		myFriendList.setAdapter(listItemAdapter);
+		myFriendList.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+            	intent.setClass(FriendControlActivity.this, FriendInfoActivity.class);
+            	Bundle bundle = new Bundle();
+            	bundle.putString("name", friendDataList.get(arg2).get("name").toString());
+            	intent.putExtras(bundle);
+            	startActivity(intent);
+			}
+			
+		});
+		
+		myFriendList.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				// TODO Auto-generated method stub
+				final CharSequence[] items = {"查看好友信息", "删除好友"};
+    			AlertDialog.Builder builder = new AlertDialog.Builder(FriendControlActivity.this);
+    			builder.setItems(items, new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						// TODO Auto-generated method stub
+						
+					}
+    			});
+    			
+    			builder.show();
+    			
+    			AlertDialog alert = builder.create();
+    			
+    			return true;
+			}
+			
+		});
+        
+		
+		
         addFriend = (Button) findViewById(R.id.addFriendbtn);
         addFriend.setOnClickListener(new OnClickListener(){
 

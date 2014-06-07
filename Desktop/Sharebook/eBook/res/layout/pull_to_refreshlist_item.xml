@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/pull_userimg"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/head01" />
+
+    <TextView
+        android:id="@+id/pull_username"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/pull_userimg"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/pull_userimg"
+        android:text="UserName" />
+
+    <ImageView
+        android:id="@+id/pull_bookimg"
+        android:layout_width="35dp"
+        android:layout_height="47dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/pull_userimg"
+        android:layout_marginTop="1dp"
+        android:src="@drawable/initialbookimg" />
+
+    <TextView
+        android:id="@+id/pull_bookauthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pull_bookname"
+        android:layout_below="@+id/pull_bookname"
+        android:text="BookAuthor" />
+
+    <TextView
+        android:id="@+id/pull_bookintro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pull_bookimg"
+        android:layout_alignLeft="@+id/pull_bookauthor"
+        android:text="BookIntro" />
+
+    <TextView
+        android:id="@+id/pull_uploadtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pull_username"
+        android:layout_below="@+id/pull_username"
+        android:text="UploadTime"
+        android:textColor="@color/gray"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/pull_bookname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pull_uploadtime"
+        android:layout_below="@+id/pull_uploadtime"
+        android:text="BookName" />
+
+    <Button
+        android:id="@+id/pull_good"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBaseline="@+id/pull_username"
+        android:layout_alignBottom="@+id/pull_username"
+        android:layout_marginRight="25dp"
+        android:layout_toLeftOf="@+id/pull_comment"
+        android:background="@drawable/book_love" />
+
+    <TextView
+        android:id="@+id/pull_goodnum"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pull_bookimg"
+        android:layout_alignRight="@+id/pull_good"
+        android:text="100" />
+
+    <TextView
+        android:id="@+id/pull_comnum"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pull_goodnum"
+        android:layout_alignBottom="@+id/pull_goodnum"
+        android:layout_alignRight="@+id/pull_comment"
+        android:text="1000" />
+
+    <Button
+        android:id="@+id/pull_comment"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignBaseline="@+id/pull_good"
+        android:layout_alignBottom="@+id/pull_good"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/book_comment" />
+
+</RelativeLayout>

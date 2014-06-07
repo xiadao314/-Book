@@ -26,14 +26,17 @@ public class MainControlActivity extends ActivityGroup implements OnItemClickLis
 	private int [] mImageLightIds; 
 	private ImageAdapter mImageAdapter; 
 	private LinearLayout mLinearLayout; 
+	private String nickname;
 	//private MyReceiver receiver=null;
+	
 	
 	@Override 
 	public void onCreate(Bundle savedInstanceState) { 
 		super.onCreate(savedInstanceState); 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.control); 
-		
+		Intent intent=getIntent();
+		nickname=intent.getStringExtra("nickname");
 		
 		/*new Thread(new Runnable() {		
 			  @Override
@@ -103,14 +106,18 @@ public class MainControlActivity extends ActivityGroup implements OnItemClickLis
 		//先清除容器里面的View 
 		mLinearLayout.removeAllViews(); 
 		Intent intent = null; 
-		if(position == 0){ 
+		if(position == 0){ 			
 			intent = new Intent(MainControlActivity.this, PullToRefreshActivity.class); 
+			intent.putExtra("nickname", nickname);
 		}else if(position == 1){ 
 			intent = new Intent(MainControlActivity.this, MybookControlActivity.class); 
+			intent.putExtra("nickname", nickname);
 		}else if(position == 2){ 
 			intent = new Intent(MainControlActivity.this, FriendControlActivity.class); 
+			intent.putExtra("nickname", nickname);
 		}else if(position == 3){ 
 			intent = new Intent(MainControlActivity.this, SetupActivity.class); 
+			intent.putExtra("nickname", nickname);
 		} 
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 

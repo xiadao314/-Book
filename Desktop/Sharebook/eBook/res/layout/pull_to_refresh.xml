@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/headbackground"
+        android:gravity="center"
+        android:text="淘 书"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+    
     <!--
     The PullToRefreshListView replaces a standard ListView widget.
     -->
@@ -11,5 +25,6 @@
         android:id="@+id/android:list"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
+        android:layout_below="@+id/textView1"
         />
-</LinearLayout>
+</RelativeLayout>

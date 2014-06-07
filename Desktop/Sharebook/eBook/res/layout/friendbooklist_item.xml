@@ -4,10 +4,20 @@
     android:layout_height="match_parent" >
 
     <TextView
+        android:id="@+id/booknameid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+         android:layout_marginTop="6dp"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/bookimageid"
+        android:text="TextView"
+        android:textSize="20sp" />
+    
+    <TextView
         android:id="@+id/bookauthorid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
         android:layout_alignLeft="@+id/booknameid"
         android:layout_below="@+id/booknameid"
         android:text="TextView"
@@ -30,15 +40,5 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/book1" />
-
-    <TextView
-        android:id="@+id/booknameid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/bookimageid"
-        android:text="TextView"
-        android:textSize="20sp" />
 
 </RelativeLayout>
